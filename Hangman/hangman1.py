@@ -15,7 +15,7 @@ stage = {0 : '     +-----\n     |     \n     |     \n     |     \n     |     \n-
 stageNum = 0
 guessedLets = []
 
-with open('mywords.txt', 'r', encoding='utf8') as f:
+with open('words.txt', 'r', encoding='utf8') as f:
     lines = f.readlines()
     lineAmount = len(lines) - 1
 
