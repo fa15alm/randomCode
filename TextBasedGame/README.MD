@@ -1,2 +1,2 @@
-# Work In Progredd
+# Work In Progress
 This game is currently a work in progress.
