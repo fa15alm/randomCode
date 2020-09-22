@@ -24,16 +24,39 @@ def checkPlate(plate):
             return False
 
 def checkTime(time1, time2):
-    try:
-        hours = float(time2) - float(time1)
-        return hours
-    except ValueError:
-        return ValueError
+    hours = float(time2) - float(time1)
+    return hours
 
 def checkSpeed(distance, time):
     speed = distance / time
     return str(speed)
 
-time1 = input('The time the car passed camera 1 in hours: ')
-time2 = input('The time the car passed camera 2 in hours: ')
+while True:
+    time1 = input('The time the car passed camera 1 in hours: ')
+    try:
+        time1 = float(time1)
+        break
+    except ValueError:
+        print('Please enter a number in hours.')
+        continue
+
+while True:
+    time2 = input('The time the car passed camera 1 in hours: ')
+    try:
+        time2 = float(time2)
+        break
+    except ValueError:
+        print('Please enter a number in hours.')
+        continue
+
 hours = checkTime(time1, time2)
+distance = 1
+
+mph = checkSpeed(distance, hours)
+
+plate = input('Please enter the number plate of the car: ').strip()
+if not checkPlate(plate):
+    print('That is not a valid numberplate. ')
+else:
+    mph = mph.strip('.0')
+    print('The car with the numberplate \'' + plate + '\' was travelling at ' + mph + 'mph.')
