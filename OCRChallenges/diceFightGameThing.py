@@ -43,6 +43,7 @@ else:
 
 strengthDif /= 5
 strengthMod = roundDown(strengthDif)
+print('Stength Mod - ' + str(strengthMod))
 
 ## SKILL MOD
 if p1.skill > p2.skill:
@@ -54,6 +55,7 @@ else:
 
 skillDif /= 5
 skillMod = roundDown(skillDif)
+print('Skill Mod - ' + str(skillMod))
 
 print('It is time to throw dice, ' + p1.name + ', You are first.')
 enter = input('Press enter to see your roll. ')
@@ -85,8 +87,8 @@ if p2.strength < 0:
 if p2.skill < 0:
     p2.skill = 0
 
-print(p1.name + '\'s Skill, Strength: ' + str(p1.skill) + str(p1.strength))
-print(p2.name + '\'s Skill, Strength: ' + str(p2.skill) + str(p2.strength))
+print(p1.name + '\'s Skill, Strength: ' + str(p1.skill) + ', ' + str(p1.strength))
+print(p2.name + '\'s Skill, Strength: ' + str(p2.skill) + ', ' + str(p2.strength))
 
 if p1.dead:
     print(p1.name + ' Died.')
