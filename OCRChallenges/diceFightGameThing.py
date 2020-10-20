@@ -1,6 +1,7 @@
 from random import randint
 from math import floor as roundDown
 from time import sleep
+import re
 
 class Player:
     def __init__(self, name):
@@ -19,6 +20,27 @@ class Player:
     #     roll4 = self.roll(4)
     #     rolltotal = roll12 // roll4
     #     self.skill += rolltotal
+while True:
+    di = input('Would you like to use the scoreboard, Or use the game? (s/g) ').lower().strip()
+    if di in ['s', 'g']:
+        break
+    else:
+        print('That is not a valid option.')
+        continue
+
+if di == 's':
+    with open('attributes.txt', 'r') as f:
+        contents = f.read()
+    names = re.findall('\'(.*)\':', contents)
+    nm = input('Whose attributes do u wanna pull? ').strip().lower()
+    if nm in names:
+        strength = re.findall('\'' + nm + '\': Strength: \'(.*)\', Skill: ', contents)
+        skill = re.findall('\'' + nm + '\': Strength: \'' + strength[0] + '\', Skill: \'(.*)\'', contents)
+        print(nm + '\'s Strength is ' + strength[0] + ', and their Skill is ' + skill[0])
+        exit()
+    else:
+        print('That player is not on the scoreboard.')
+        exit()
 
 p1name = input('Player 1, What is your name? ').strip()
 p2name = input('Player 2, What is your name? ').strip()
@@ -28,9 +50,6 @@ p1.strength = int(input('What should ' + p1name + '\'s strength be set to? ').st
 p1.skill = int(input('What should ' + p1name + '\'s skill be set to? ').strip())
 p2.strength = int(input('What should ' + p2name + '\'s strength be set to? ').strip())
 p2.skill = int(input('What should ' + p2name + '\'s skill be set to? ').strip())
-with open('attributes.txt', 'a') as f:
-    f.write(p1.name + ':\n  Strength: ' + str(p1.strength) + '\n  Skill: ' + str(p1.skill) + '\n\n')
-    f.write(p2.name + ':\n  Strength: ' + str(p2.strength) + '\n  Skill: ' + str(p2.skill) + '\n\n')
 
 
 # STRENGTH MOD
@@ -98,3 +117,7 @@ elif p2.dead:
     exit()
 else:
     print('No one died.')
+
+with open('attributes.txt', 'a') as f:
+    f.write('\'' + p1.name.lower() + '\': Strength: \'' + str(p1.strength) + '\', Skill: \'' + str(p1.skill) + '\'\n')
+    f.write('\'' + p2.name.lower() + '\': Strength: \'' + str(p2.strength) + '\', Skill: \'' + str(p2.skill) + '\'\n')
