@@ -112,10 +112,8 @@ print(p2.name + '\'s Skill, Strength: ' + str(p2.skill) + ', ' + str(p2.strength
 
 if p1.dead:
     print(p1.name + ' Died.')
-    exit()
 elif p2.dead:
     print(p2.name + ' Died.')
-    exit()
 else:
     print('No one died.')
 
