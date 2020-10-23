@@ -35,8 +35,9 @@ if di == 's':
     nm = input('Whose attributes do u wanna pull? ').strip().lower()
     if nm in names:
         strength = re.findall('\'' + nm + '\': Strength: \'(.*)\', Skill: ', contents)
-        skill = re.findall('\'' + nm + '\': Strength: \'' + strength[0] + '\', Skill: \'(.*)\'', contents)
-        print(nm + '\'s Strength is ' + strength[0] + ', and their Skill is ' + skill[0])
+        skill = re.findall('\', Skill: \'(.*)\'', contents)
+        for i in range(0, len(strength)):
+            print(nm + '\'s Strength is ' + strength[i] + ', and their Skill is ' + skill[i])
         exit()
     else:
         print('That player is not on the scoreboard.')
@@ -64,7 +65,7 @@ strengthDif /= 5
 strengthMod = roundDown(strengthDif)
 print('Stength Mod - ' + str(strengthMod))
 
-## SKILL MOD
+# SKILL MOD
 if p1.skill > p2.skill:
     skillDif = p1.skill - p2.skill
 elif p1.skill < p2.skill:
