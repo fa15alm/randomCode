@@ -57,12 +57,12 @@ while True:
         print('Enter 1 or 0.')
 
 if gate == 'or':
-    print(orGate(input1, input2))
+    print('Output: ' + orGate(input1, input2))
 elif gate == 'and':
-    print(andGate(input1, input2))
+    print('Output: ' + andGate(input1, input2))
 elif gate == 'xor':
-    print(xorGate(input1, input2))
+    print('Output: ' + xorGate(input1, input2))
 elif gate == 'nand':
-    print(nandGate(input1, input2))
+    print('Output: ' + nandGate(input1, input2))
 elif gate == 'nor':
-    print(norGate(input1, input2))
+    print('Output: ' + norGate(input1, input2))
