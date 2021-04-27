@@ -1,45 +1,52 @@
-from random import choice
+from random import randint as rint
+from math import floor
 
-fruit = ['cherry', 'bell', 'lemon', 'orange', 'star', 'skull']
 
-class Player:
-    def __init__(self, name, money=1.0):
-        self.name = name
-        self.money = money
+def roundthing(num):
+    newnum = num * 10
+    newnum = floor(newnum)
+    return newnum / 10
 
-name = input('What is your name? ').strip()
-p = Player(name)
 
+
+fruits = ['Cherry', 'Bell', 'Lemon', 'Orange', 'Star', 'Skull']
+credit = 1.0
 while True:
-    print('Your Money: £' + str(p.money))
-    enter = input('Press enter to spin! (Cost 20p), type STOP to walk away.')
-    if enter.lower().strip() == 'stop':
-        print('You walked away with £' + str(p.money))
+    credit -= 0.2
+    if credit < 0:
+        print('You don\'t have enough money!')
         break
-    slot1 = choice(fruit)
-    slot2 = choice(fruit)
-    slot3 = choice(fruit)
+    slot1 = rint(0,5)
+    slot2 = rint(0,5)
+    slot3 = rint(0,5)
     print()
-    print(slot1)
-    print(slot2)
-    print(slot3)
+    print(fruits[slot1])
+    print(fruits[slot2])
+    print(fruits[slot3])
     print()
-    if (slot1 == slot2 and slot2 != slot3) or (slot2 == slot3 and slot2 != slot1) or (slot1 == slot3 and slot1 != slot2):
-        print('You won £0.50')
-        p.money += 0.50
-    elif slot1 == slot2 and slot2 == slot3:
-        print('You won £1')
-        p.money += 1
-    elif slot1 == 'bell' and slot2 == 'bell' and slot3 == 'bell':
-        print('You won £5')
-        p.money += 5
-    elif (slot1 == 'skull' and slot2 == 'skull' and slot3 != 'skull') or (slot1 == 'skull' and slot3 == 'skull' and slot2 != 'skull') or (slot2 == 'skull' and slot3 == 'skull' and slot1 != 'skull'):
+    if slot1 == 5 and slot2 == 5 and slot3 == 5:
+        credit = 0
+        print('You lost!')
+        break
+    elif (slot1 == 5 and slot2 == 5) or (slot1 == 5 and slot3 == 5) or (slot2 == 5 and slot3 == 5):
+        credit -= 1
         print('You lost £1')
-        p.money -= 1
-    elif slot1 == 'skull' and slot2 == 'skull' and slot3 == 'skull':
-        print('You lost all your money (' + str(p.money) + ')!')
-        p.money = 0
-    if p.money <= 0:
-        print('You lost all your money!')
+    elif slot1 == 1 and slot2 == slot1 and slot3 == slot1:
+        credit += 5
+        print('You got £5')
+    elif slot1 == slot2 and slot2 == slot3:
+        credit += 1
+        print('You got £1')
+    elif slot1 == slot2 or slot1 == slot3 or slot2 == slot3:
+        credit += 0.5
+        print('You got 50p')
+    else:
+        print('You got nothing')
+    print('Credit: £' + str(roundthing(credit)) + '0')
+    again = input('Do you want to play again? (Y/N): ').lower().strip()
+    if again == 'y' or again == 'yes':
+        continue
+    else:
+        print('Goodbye.')
         break
-en = input('Press enter to close the program.')
+    
