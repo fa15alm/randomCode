@@ -120,8 +120,8 @@ def main(bet, p):
         if calculateTotal(dealer) == 21:
             print('You Draw!')
         else:
-            print('You Win ' + str(bet) + ' credits!')
-            p.give(bet)
+            print('You Win ' + str(bet * 1.5) + ' credits!')
+            p.give(bet * 1.5)
         return
 
 
