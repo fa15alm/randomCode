@@ -162,6 +162,7 @@ def pauseScreen():
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key).upper() == 'ESCAPE':
                 startMenu()
             if event.type == pygame.KEYDOWN and pygame.key.name(event.key).upper() == 'P':
+                pressToPlay()
                 return
             
         
