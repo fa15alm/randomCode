@@ -212,6 +212,9 @@ while True:
                 if event.button == 1:
                     if pRect.collidepoint(event.pos):
                         resetGame()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_r:
+                    resetGame()
         pygame.display.update()
         continue
     
@@ -229,4 +232,7 @@ while True:
                 moveSquares('l', board)
             if event.key == pygame.K_RIGHT:
                 moveSquares('r', board)
+            if event.key == pygame.K_r:
+                    resetGame()
+            
     pygame.display.update()
