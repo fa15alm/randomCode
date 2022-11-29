@@ -193,9 +193,6 @@ def resetGame():
 # ------------------------------------------ MAIN LOOP ------------------------------------------ #
 
 resetGame()
-
-board = [[0, 16, 8, 4], [0, 0, 2, 4], [0, 0, 2, 0], [0 for i in range(4)]]
-
 while running:
     clock.tick(FPS)
     drawScreen(screen, boardSurface)
